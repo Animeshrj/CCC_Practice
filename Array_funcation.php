@@ -65,5 +65,9 @@ echo"<br>";
 
 // 14. array_values($array):- Returns all the values of an array.
 print_r(array_values($color));
+echo"<br>";
 print_r(array_values($Habit));
+echo"<br>";
+
+
 ?>
