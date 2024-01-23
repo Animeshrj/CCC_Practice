@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form page</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body class="form">
+    <form action="Form_vaild.php" method="post">
+      <div>
+        <label>Name</label>
+        <br />
+        <input type="text" name="Product_name" /><br />
+        <label for="sku">SKU </label><br />
+        <input type="text" name="Sku" />
+        <br />
+        <label> Product Type </label>
+        <input type="radio" name="Product_type" />simple
+        <input type="radio" />Bundle
+        <br />
+        <label>Category</label>
+        <select name="Category">
+          <option href="#">Bar & Game Room</option>
+          <option href="#">Bedroom</option>
+          <option href="#">Decor</option>
+          <option href="#">Dining & Kitchen</option>
+          <option href="#">Lighting</option>
+          <option href="#">Living Room</option>
+          <option href="#">Mattresses</option>
+          <option href="#">Office</option>
+          <option href="#">Outdoor</option>
+        </select>
+        <br />
+        <label>Manufacturer Cost</label><br />
+        <input type="text" name="Manufacturer_Cost" />
+        <br />
+        <label>Shipping Cost</label><br />
+        <input type="text" name="Shipping_Cost" />
+        <br />
+        <label>Total Cost </label><br />
+        <input type="text" name="Total_Cost" />
+        <br />
+        <label>Price </label><br />
+        <input type="text" name="Price" />
+        <br />
+        <label>Status</label>
+        <select name="Status">
+          <option>Enable</option>
+          <option>Disable</option>
+        </select>
+        <br />
+        <label>Created At</label>
+        <input type="date" name="Created_At" />
+        <br />
+        <label for="">Updated At</label>
+        <input type="date" name="Updated_At" />
+        <br />
+        <input type="submit" value="submit" />
+      </div>
+    </form>
+  </body>
+</html>
