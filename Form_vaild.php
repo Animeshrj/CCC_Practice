@@ -1,6 +1,22 @@
 <?php
+echo"<pre>";
+print_r($_POST);
+function insert($table,$data)
+{
+    $col = $val = [];
+    foreach($data as $colum => $value)
+    {
+        $col[] = "`$colum` = '$value'"
+    }
+    $col = implode("," $col);
+    $sql = "INSERT INTO {$table} {$col} VALUE {$VAL}";
+    return sql;
+}
+echo insert("ccc_product",['Product_type' =>'Simple'];)
+
+
 $servername = "localhost";
-$username = "root";
+$username = "root"; 
 $password = "";
 $database_name = "ccc_practice";
 
@@ -39,5 +55,5 @@ else
     . mysqli_error($conn);
 }
 
-mysqli_close($conn);
-?>
+   mysqli_close();
+    ?>
