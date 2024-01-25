@@ -1,8 +1,4 @@
 <?php
-
-include 'Sql_function.php';
-
-
 $servername = "localhost";
 $username = "root"; 
 $password = "";
@@ -19,21 +15,4 @@ else{
     echo "connection stablish";
 }
 
-$data = $_POST['Product'];
-
-$table = "ccc_product";
-$sql_insert = insert($table,$data);
-
-
-if(mysqli_query($conn,$sql_insert))
-{
-    echo "<h3>Data is inserted in datbase";
-    
-}
-else
-{
-    echo "ERROR: Hush! Sorry". $sql. "<br>"
-    . mysqli_error($conn);
-}
- 
-    ?>
+?>

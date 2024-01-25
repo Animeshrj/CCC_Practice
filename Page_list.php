@@ -49,12 +49,13 @@ else{
     
     if($result->num_rows > 0)
     {
-        echo "<ul>";
+        echo "<table>";
+        echo "<td>";
         while ($row = $result->fetch_assoc()) {
-            echo "<li>{$row['Product_name']} - {$row['Sku']} - {$row['Product_type']} - {$row['Category']} - {$row['Manufacturer_Cost']} - {$row['Shipping_Cost']} - {$row['Total_Cost']} - {$row['Price']} - {$row['Status']} - {$row['Created_At']} - {$row['Updated_At']}</li>"; // Replace with your actual column names
+            echo "<tr>{$row['Product_name']} - {$row['Sku']} - {$row['Product_type']} - {$row['Category']} - {$row['Manufacturer_Cost']} - {$row['Shipping_Cost']} - {$row['Total_Cost']} - {$row['Price']} - {$row['Status']} - {$row['Created_At']} - {$row['Updated_At']}</tr>"; // Replace with your actual column names
             // Add more columns as needed
         }
-        echo "</ul>";
+        echo "</td>";
     } else {
         echo "No records found.";
     }
