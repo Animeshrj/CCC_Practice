@@ -64,5 +64,13 @@ if($result->num_rows > 0)
     {
         echo "No records found.";
     }
+//     if(isset($_POST['edit']))
+// {
+//     $sql = update("ccc_product",['Product_id'=>$_GET['Product_id']]);
+//     $conn->query($sql);
+//     header('location:Product_list.php');
+// }
+// $sql = display_one("ccc_product",$_POST['Product_id']);
+// $result = $conn->query($sql);
     
 ?>

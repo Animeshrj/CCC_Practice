@@ -27,8 +27,8 @@ $sql_insert = insert($table,$data);
 
 if(mysqli_query($conn,$sql_insert))
 {
-    echo "<h3>Data is inserted in datbase";
-    
+    // echo "<h3>Data is inserted in datbase";
+    header('location:catalog/Product_list.php');
 }
 else
 {

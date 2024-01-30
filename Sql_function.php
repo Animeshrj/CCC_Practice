@@ -49,7 +49,7 @@ function Update($table,$d = [],$where = [])
     $colums = implode(",",$colums);
     $whereCond = implode(" AND ",$whereCond);
 
-    $sql = "UPDATE {$table} SET {$colums} WHERE {$whereCond}";
+    $sql = "UPDATE {$table} SET {$colums } WHERE {$whereCond}";
     return $sql;
 }
 // 
