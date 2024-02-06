@@ -53,12 +53,47 @@ class Lib_sql_Query_Builder extends Lib_Connection
         return "DELETE FROM {$table} WHERE {$whereCond}";
     }
 
-    public function display($table)
+    public function Select($table)
     {
         return "SELECT * FROM {$table}";
+        
     }
     public function display_One($table,$value)
     {
         return "SELECT * FROM {$table} WHERE Product_id = {$value}";
     }
+    public function display($result){
+        if($result->num_rows > 0)
+         {
+             echo "<table>";
+             echo "<tr>";
+             while($row = $result->fetch_assoc())
+             {
+                 foreach ($row as $key => $value) {
+                     echo "<th>" . $key . "</th>";
+                 }
+                 break;
+             }
+             echo "</tr>";
+ 
+             while($row = $result->fetch_assoc())
+             {
+                 echo"<tr>";
+                 $id = $row['Product_id'];
+                 foreach ($row as $key => $value) {
+                     echo "<td>" . $value . "</td>";
+                    }
+                    ?>
+                    <td><a href="<?="Product.php?Product_id=$id"?>"> Delete</a></td>
+                        <td><a href="<?="Product.php?edit=1&Product_id=$id"?>"> Edit</a></td>
+                        <?php
+           
+             }
+             echo "</tr>";
+ 
+         }
+         else{
+             echo "data not found";
+         }
+        }     
 }

@@ -28,8 +28,8 @@ if(isset($_GET['delete']))
 }
 
 $sql = display("ccc_product");
+// print_r($sql);
 $result = $conn->query($sql);
-
 if($result->num_rows > 0)
 {
     echo "<table>";
@@ -59,7 +59,7 @@ if($result->num_rows > 0)
             <?php
         }
         echo "</tr>";
-    }
+    }   
     else 
     {
         echo "No records found.";

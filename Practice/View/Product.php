@@ -1,9 +1,11 @@
 <?php
-class View_Product
+class View_Product extends Lib_sql_Query_Builder
 {
+   
+        
     public function __construct()
     {
-
+       
     }
 
     public function createForm()

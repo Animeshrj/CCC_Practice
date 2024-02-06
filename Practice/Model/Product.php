@@ -7,46 +7,45 @@ class Model_Product extends Model_Abstract
 
     }
 
-    public function save($data)
+    public function insert($data)
     {
-        // echo "<pre>";
-        // $sql = $this->queryBuilder()->display_One($this->table,"1");
-        // print_r($sql);
-        $sql = $this->queryBuilder()->display_One($this->table,"1");
-        print_r($this->queryBuilder()->exec($sql));
-        // print_r($sql);
-    //     $result = $conn->query($sql);
-
-    //     if($result->num_rows > 0)
-    //     {
-    //         echo "<table>";
-    //         echo "<tr>";
-    //             while ($row = $result->fetch_assoc()) {
-    //                 foreach($row as $key => $value)
-    //                 {
-            
-    //                     echo '<th>'. $key . '</th>';
-    //                 }
-    //                 break;
-    //             }
-        
-    //             echo "</tr>";
-
-    //             while ($row = $result->fetch_assoc()) {
-    //             echo"<tr>";
-    //             $id = $row['Product_id'];
-    //                 foreach($row as $key => $value)
-    //                 {         
-    //                 echo '<td>'. $value . '</td>';
-    //             }
-            
-           
-    //        }
-    //     echo "</tr>";
-    //  }
-    //  else 
-    //  {
-    //  echo "No records found.";
-    // }
+        echo "<pre>";
+        $sql = $this->queryBuilder()->insert($this->table,$data);
+        $this->queryBuilder()->exec($sql);
     }
+    public function fetch($data)
+    {
+        echo "<pre>";
+        // $sql = $this->queryBuilder()->insert($this->table,$data);
+           
+         $sql = $this->queryBuilder()->Select($this->table);
+         $result = $this->queryBuilder()->exec($sql);
+          print_r($sql);
+          $this->queryBuilder()->display($result);
+ 
+    }
+    public function Delete($data)
+    {
+        if(isset($_GET['delete']))
+        {
+            $sql = $this->queryBuilder()->delete($this->table,['Product_id'=>$data]);
+            $result = $this->queryBuilder()->exec($sql);
+            print_r($result);
+        }      
+        
+ 
+    }
+    public function update($data)
+    {
+        echo "<pre>";
+        // $sql = $this->queryBuilder()->insert($this->table,$data);
+           
+         $sql = $this->queryBuilder()->Select($this->table);
+         $result = $this->queryBuilder()->exec($sql);
+         
+ 
+    }
+    
+        
+    
 }

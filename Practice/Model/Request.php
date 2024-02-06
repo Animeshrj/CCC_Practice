@@ -39,4 +39,10 @@ class Model_Request
         return false;
         
     }
+    public function getRequestURI()
+    {
+        $url = $_SERVER['REQUEST_URI'];
+        $url_view = str_replace("/PhpPractice/Practice/","",$url);
+        return $url_view;
+    }
 }
