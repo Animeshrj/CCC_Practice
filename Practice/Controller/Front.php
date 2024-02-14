@@ -5,9 +5,9 @@ class Controller_Front
     {
         $object = new Model_Request();
         $url = $object->getRequestURI();
-        $classname = "View_".ucwords(str_replace("/","_",$url),'_');  
+        $classname = "View_" . ucwords(str_replace("/", "_", $url), '_');
         $layout = new $classname();
         return $layout->tohtml();
-      
+
     }
 }

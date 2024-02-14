@@ -1,0 +1,4 @@
+<?php
+echo $this->Form->getRequest()->getParams('pid');
+$productModel = Mage :: getModel("Product/Product");
+print_r($productModel);

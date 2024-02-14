@@ -3,17 +3,17 @@ include "Lib/autoload.php";
 
 class CCC
 {
-    public static function init()
-    {
-        $object = new Model_Request();
-        $objCont = new Controller_Front();
-        $objCont->init();
+    // public static function init()
+    // {
+    //     $object = new Model_Request();
+    //     $objCont = new Controller_Front();
+    //     $objCont->init();
 
-       
-    }
+
+    // }
 
 }
-CCC::init();
+// CCC::init();
 // $url = $_REQUEST[]
 // // $connection = new Lib_Connection();
 // // $connection->connect();
@@ -27,20 +27,23 @@ CCC::init();
 // //     echo"connection";
 // // }
 
-// $request = new Model_Request;
+$request = new Model_Request;
 
-// if(!$request->isPost())
-// {
-//     $view_product = new View_Product();
-//     echo $view_product->tohtml();
-// }
-// else{
-//     $product = new Model_Product();
-//     // $product->insert($request->getParams('data'));
-//     $product->fetch($request->getParams('data'));
+if (!$request->isPost()) {
+    $view_product = new View_Product();
+    echo $view_product->tohtml();
+} else {
+    $product = new Model_Product();
+    // $product->insert($request->getParams('data'));
+    $product->fetch($request->getParams('data'));
+    if ($request->getQueryData('delete') || $request->getQueryData('submit')) {
+        $product->delete($request->getParams('data'));
+        header('Location:Product.php');
+        $url = $_SERVER['PHP_SELF'];
+        echo $url;
+        // if ($url)
+        // $product->Delete($request->getQueryData('Product_id'));
 
-//     if(url)
-//     $product->Delete($request->getQueryData('Product_id'));
-
-//     echo "<a href = 'home' > Home </a>";
-//}
+        echo "<a href = 'home' > Home </a>";
+    }
+}
