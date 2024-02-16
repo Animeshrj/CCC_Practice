@@ -1,5 +1,5 @@
 <?php
-class Core_Controller_Front_Action extends Core_Block_Template
+class Core_Controller_Front_Action 
 {
     protected $_layout = null;
     public function getLayout()

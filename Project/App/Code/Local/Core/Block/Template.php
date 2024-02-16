@@ -26,7 +26,7 @@ class Core_Block_Template extends Core_Block_Abstract
     }
     public function getChildHtml($key)
     {
-        return $this->getchild($key)->toHtml();
+        return $this->getChild($key)->toHtml();
     }
     public function getRequest()
     {

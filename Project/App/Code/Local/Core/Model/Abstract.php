@@ -1,5 +1,5 @@
 <?php
-class Core_Model_DB_Abstract
+class Core_Model_Abstract
 {
     protected $data = [];
     protected $resourceClass = '';
@@ -11,21 +11,24 @@ class Core_Model_DB_Abstract
     }
     public function setResourceClass($resourceClass)
     {
+        $this->resourceClass = $resourceClass;
     }
     public function setCollectionClass($collectionClass)
     {
+        $this->collectionClass = $collectionClass;
     }
     public function setId($id)
     {
+
     }
     public function getId()
     {
     }
     public function getResource()
     {
-        $modleClass = getClass($this);
-        $modleClass = "Product_Model_Resource_Product";
-        return $modleClass;
+        $modleClass = get_class($this);
+        $modleClass = str_replace('_Model_', '_Model_Resource_', $modleClass);
+        return new $modleClass;
     }
     public function getCollection()
     {
@@ -63,7 +66,7 @@ class Core_Model_DB_Abstract
     public function load($id, $column = null)
     {
         print_r($this->getResource());
-        
+
     }
     public function delete()
     {

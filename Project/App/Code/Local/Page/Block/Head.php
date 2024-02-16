@@ -10,11 +10,11 @@ class Page_Block_Head extends Core_Block_Template
     }
     public function addJS($file)
     {
-        $this->_js[$file];
+        $this->_js[] = $file;
     }
     public function addCSS($file)
     {
-        $this->_css[$file];
+        $this->_css[] = $file;
     }
     public function getJS()
     {

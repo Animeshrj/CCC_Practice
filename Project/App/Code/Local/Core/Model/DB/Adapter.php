@@ -2,27 +2,38 @@
 class Core_Model_DB_Adapter
 {
     public $config = [
-        "host"=> "localhost",
-        "user"=> "root",
-        "password"=> "",
-        "db"=> "ccc_pratice",
+        "host" => "localhost",
+        "user" => "root",
+        "password" => "",
+        "db" => "ccc_practice",
     ];
     public $connect = null;
     public function connect()
     {
-        if(is_null($this->connect)){
-            
+        if (is_null($this->connect)) {
+
             $this->connect = mysqli_connect(
                 $this->config["host"],
                 $this->config["user"],
                 $this->config["password"],
                 $this->config["db"],
             );
+            if (!$this->connect) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
         }
     }
     public function fetchAll($query)
     {
 
+        // $row = [];
+        // $this->connect();
+        // // print_r($this->connect);
+        // $result = mysqli_query($this->connect, $query);
+        // while ($_row = mysqli_fetch_assoc($result)) {
+        //     $row = $_row;
+        // }
+        // return $row;
     }
     public function fetchPairs($query)
     {

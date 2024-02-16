@@ -17,6 +17,6 @@ class Page_Controller_index extends Core_Controller_Front_Action
     }
     public function saveAction()
     {
-        $Layout = $this->getLayout();
+        $Layout = $this->getLayout()->toHtml();
     }
 }
