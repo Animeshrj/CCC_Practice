@@ -26,4 +26,18 @@ class Product_Model_Resource_Product
     //     $data = $this->getAdapter()->fetchAll($sql);
     //     return $data;
     // }
+    public function load($id ,$colum = null)
+    {
+        $sql = "SELECT * FROM {$this->_tablename} WHERE  {$this->_primaryKey}  = {$id} LIMIT 1";
+        echo "<pre>"; 
+        return $this->getAdapter()->fetchRow($sql);
+    }
+     public function getAdapter()
+    {
+        return new Core_Model_DB_Adapter();
+    }
+    public function getPrimaryKey()
+    {
+        return $this->_primaryKey;
+    }
 }
