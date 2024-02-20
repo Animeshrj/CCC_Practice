@@ -10,12 +10,12 @@ class Core_Block_Template extends Core_Block_Abstract
     public function addChild($key, $value)
     {
         $this->_child[$key] = $value;
+        return $this;
     }
-    
+
     public function removeChild($key)
     {
-        if(isset($this->_child[$key]))
-        {
+        if (isset($this->_child[$key])) {
             unset($this->_child[$key]);
         }
         return $this;
@@ -26,11 +26,27 @@ class Core_Block_Template extends Core_Block_Abstract
     }
     public function getChildHtml($key)
     {
-        return $this->getChild($key)->toHtml();
+        $html = "";
+        if ($key == '' && count($this->_child)) {
+            foreach ($this->_child as $_child) {
+                $html .= $_child->toHtml();
+            }
+        } else {
+            $html = $this->getChild($key)->toHtml();
+        }
+        return $html;
+    }
+    public function setTemplate($template)
+    {
+        return $this->template = $template;
+    }
+    public function getTemplate()
+    {
+        return $this->template;
     }
     public function getRequest()
     {
-        return  Mage::getModel('Core/Request');
+        return Mage::getModel('Core/Request');
     }
 
 }

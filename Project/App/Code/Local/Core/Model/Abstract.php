@@ -2,6 +2,7 @@
 class Core_Model_Abstract
 {
     protected $_data = [];
+    // public $_data = [];
     protected $_resourceClass = '';
     protected $_collectionClass = '';
     protected $_resource = null;
@@ -86,6 +87,8 @@ class Core_Model_Abstract
     }
     public function save()
     {
+        $this->getResource()->save($this);
+        return $this;
     }
     public function load($id, $column = null)
     {

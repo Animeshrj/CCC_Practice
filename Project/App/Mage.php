@@ -26,7 +26,6 @@ class Mage
             return self::$BaseDir.'/'.$subDir;
         }
         return self::$BaseDir;
-    
     }
     public static function getModel($model_name)
     {

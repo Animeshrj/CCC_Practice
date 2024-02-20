@@ -6,12 +6,12 @@ class Core_Block_Abstract
     public $data = [];
     public function setTemplate($template)
     {
-        $this->setTemp = $template;
+        return $this;
 
     }
     public function getTemplate()
     {
-        return $this->setTemp;
+        return $this->se;
     }
     public function __get($key)
     {
@@ -27,12 +27,17 @@ class Core_Block_Abstract
     }
     public function getData($key = null)
     {
+
     }
     public function setData($data)
     {
+        $this->_data = $data;
+        return $this;
     }
-    public function getUrl($action = null, $controller = null, $params = [], $resetParams = false)
+    // public function getUrl($action = null, $controller = null, $params = [], $resetParams = false)
+    public function getUrl($path)
     {
+        return "http://localhost/PhpPractice/Project/".$path;
     }
     public function getRequest()
     {

@@ -11,6 +11,8 @@ class Core_Block_Layout extends Core_Block_Template
     {
         $header = $this->createBlock('Page/Header');
         $this->addChild('header', $header);
+        $form = $this->createBlock('Page/Form');
+        $this->addChild('form', $form);
         $footer = $this->createBlock('Page/Footer');
         $this->addChild('footer', $footer);
         $head = $this->createBlock('Page/Head');
@@ -19,7 +21,9 @@ class Core_Block_Layout extends Core_Block_Template
         $this->addChild('content', $content);
         $message = $this->createBlock('Core/Template');
         $this->addChild('message', $message);
-        $message->setTemplate('core/message.phtml');
+        // $message->setTemplate('Product/Form.phtml');
+        // $this->addChild('form', $message);
+  
         
     }
     public function createBlock($className)
