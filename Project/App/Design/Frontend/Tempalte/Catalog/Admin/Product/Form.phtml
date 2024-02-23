@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+</head>
+
+<body>
+    <div class="form">
+        <div class='class1'>
+            <form action="<?php echo Mage::getBaseUrl('admin/catalog_product/save') ?>" method="post">
+                <h2>Product Form</h2>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="Product[name]"><br>
+
+                <label for="sku">SKU:</label><br>
+                <input type="text" id="sku" name="Product[sku]"><br>
+
+
+                <label for="color">Color:</label><br>
+                <input type="text" id="color" name="Product[color]"><br>
+
+                <label for="size">Size:</label><br>
+                <input type="text" id="size" name="Product[size]"><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="Product[description]"></textarea><br>
+
+                <label for="image_link">Image Link:</label><br>
+                <input type="text" id="image_link" name="Product[image_link]"><br>
+
+                <label for="link">Link:</label><br>
+                <input type="text" id="link" name="Product[link]"><br>
+
+                <label for="category_id">Category ID:</label><br>
+                <input type="text" id="category_id" name="Product[category_id]"><br>
+
+                <label for="price">Price:</label><br>
+                <input type="text" id="price" name="Product[price]"><br>
+
+                <label for="mfr_cost">Manufacturer Cost:</label><br>
+                <input type="text" id="mfr_cost" name="Product[mfr_cost]"><br>
+
+                <label for="shipping_cost">Shipping Cost:</label><br>
+                <input type="text" id="shipping_cost" name="Product[shipping_cost]"><br>
+
+                <label for="total_cost">Total Cost:</label><br>
+                <input type="text" id="total_cost" name="Product[total_cost]"><br>
+
+                <label for="margin_percentage">Margin Percentage:</label><br>
+                <input type="text" id="margin_percentage" name="Product[margin_percentage]"><br>
+
+                <label for="min_price">Minimum Price:</label><br>
+                <input type="text" id="min_price" name="Product[min_price]"><br>
+
+                <label for="status">Status:</label><br>
+                <input type="radio" id="status" name="Product[status]">Active
+                <input type="radio" id="status" name="Product[status]">Disactive<br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

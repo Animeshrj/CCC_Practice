@@ -1,0 +1,7 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    height: 30rem;
+    border: 2px red solid;
+    padding: 30%;
+}

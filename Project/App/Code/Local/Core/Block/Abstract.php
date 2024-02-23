@@ -6,12 +6,13 @@ class Core_Block_Abstract
     public $data = [];
     public function setTemplate($template)
     {
+        $this->template = $template;
         return $this;
 
     }
     public function getTemplate()
     {
-        return $this->se;
+        return $this->template;
     }
     public function __get($key)
     {

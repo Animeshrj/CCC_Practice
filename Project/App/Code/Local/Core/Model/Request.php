@@ -6,12 +6,7 @@ class Core_Model_Request
     protected $_actionName;
     public function __construct()
     {
-        // $reqUri = $this->getRequestURI();
-        // $reqUri = explode("/", $reqUri);
-        // $this->getModuleName = $reqUri[0];
-        // $this->getControllerName = $reqUri[1];
-        // $this->actionName = $reqUri[2];
-
+     
         $uri = $this->getRequestURI();
 		$uri = array_filter(explode("/", $uri));
 		$this->_getModuleName = isset($uri[0]) ? $uri[0] : 'Page';

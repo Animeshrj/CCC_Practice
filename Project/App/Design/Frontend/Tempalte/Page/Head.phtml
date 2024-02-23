@@ -1,15 +1,16 @@
-
 <?php $js = $this->getJS(); ?>
-<?php if(count($js)): ?>
-<?php foreach($js as $_js): ?>
-    <script type="" src="<?php echo$_js;?>"></script>
-<?php endforeach; ?>    
+<?php if (count($js)): ?>
+    <?php foreach ($js as $_js): ?>
+        <script type="" src="<?php echo Mage::getBaseUrl('skin/js/' . $_js); ?>"></script>
+
+    <?php endforeach; ?>
 <?php endif ?>
 
 <?php $css = $this->getCSS(); ?>
-<?php if(count($css)): ?>
-<?php foreach($css as $_css): ?>
-    <style type="" src="<?php echo$_css;?>"></style>
-<?php endforeach; ?>    
+<?php if (count($css)): ?>
+    <?php foreach ($css as $_css): ?>
+        <link rel="stylesheet" href="<?php echo Mage::getBaseUrl('skin/css/' . $_css); ?>">
+        </link>
+        
+    <?php endforeach; ?>
 <?php endif ?>
-

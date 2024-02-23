@@ -5,7 +5,7 @@ class Core_Model_DB_Adapter
         "host" => "localhost",
         "user" => "root",
         "password" => "",
-        "db" => "ccc_practice",
+        "db" => "ccc_project",
     ];
     public $connect = null;
     public function connect()
@@ -26,29 +26,29 @@ class Core_Model_DB_Adapter
     }
     public function fetchAll($query)
     {
-        // $row = [];
-        // $this->connect();
-        // $result = mysqli_query($this->connect,$query);
-        // if($result->num_rows > 0 )
-        // echo "<table style='border:2px solid black;'>";
-        // echo"<tr>";
-        // while ($_row = mysqli_fetch_assoc($result)) {
-        //     foreach($_row as $key => $value)
-        //     {
-        //         echo "<th style='border:2px solid black;'>". $key . "</th>";
+        $row = [];
+        $this->connect();
+        $result = mysqli_query($this->connect,$query);
+        if($result->num_rows > 0 )
+        echo "<table style='border:2px solid black;'>";
+        echo"<tr>";
+        while ($_row = mysqli_fetch_assoc($result)) {
+            foreach($_row as $key => $value)
+            {
+                echo "<th style='border:2px solid black;'>". $key . "</th>";
 
-        //     }
-        //     break;
-        // }
-        // echo "</tr>";
+            }
+            break;
+        }
+        echo "</tr>";
 
-        // while ($_row = mysqli_fetch_assoc($result)) {
-        //     echo"<tr>";
-        //     foreach($_row as $key => $value)
-        //     echo "<th style='border:2px solid black;'>". $value . "</th>";
-        // }
-        // echo"</tr>";
-        // echo"</table>";
+        while ($_row = mysqli_fetch_assoc($result)) {
+            echo"<tr>";
+            foreach($_row as $key => $value)
+            echo "<th style='border:2px solid black;'>". $value . "</th>";
+        }
+        echo"</tr>";
+        echo"</table>";
 
     }
     public function fetchPairs($query)
@@ -59,9 +59,9 @@ class Core_Model_DB_Adapter
     }
     public function fetchRow($query)
     {
-        
+
         $row = [];
-      
+
         // print_r($this->connect);
         $result = mysqli_query($this->connect(), $query);
         while ($_row = mysqli_fetch_assoc($result)) {
@@ -71,15 +71,31 @@ class Core_Model_DB_Adapter
     }
     public function insert($query)
     {
-       
-        $result = mysqli_query($this->connect(),$query);
-       
+        $sql = mysqli_query($this->connect(), $query);
+        echo $sql;
+        if ($sql) {
+            echo "<script>alert('Data inserted Succsessfully!')</script>";
+            return mysqli_insert_id($this->connect());
+        } else {
+            return FALSE;
+        }
+
+
     }
     public function update($query)
     {
     }
     public function delete($query)
     {
+        $sql = mysqli_query($this->connect(), $query);
+        if($sql)
+        {
+            echo "<script>alert('Data deleted Succsessfully!')</script>";
+        }
+        else
+        {
+            return False;
+        }
     }
     public function query($query)
     {

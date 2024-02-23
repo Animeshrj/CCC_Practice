@@ -11,19 +11,19 @@ class Core_Block_Layout extends Core_Block_Template
     {
         $header = $this->createBlock('Page/Header');
         $this->addChild('header', $header);
-        $form = $this->createBlock('Page/Form');
-        $this->addChild('form', $form);
+
         $footer = $this->createBlock('Page/Footer');
         $this->addChild('footer', $footer);
+
         $head = $this->createBlock('Page/Head');
         $this->addChild('head', $head);
+
         $content = $this->createBlock('Page/Content');
         $this->addChild('content', $content);
+
         $message = $this->createBlock('Core/Template');
+        $message->setTemplate('Core/messages.phtml');
         $this->addChild('message', $message);
-        // $message->setTemplate('Product/Form.phtml');
-        // $this->addChild('form', $message);
-  
         
     }
     public function createBlock($className)
@@ -31,8 +31,8 @@ class Core_Block_Layout extends Core_Block_Template
         return Mage :: getBlock($className);
     }
 
-    // public function getRequest()
-    // {
-    //     return Mage :: 
-    // }
+    public function getRequest()
+    {
+        return Mage :: getModel('Core/Request');
+    }
 }

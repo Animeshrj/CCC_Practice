@@ -38,7 +38,8 @@ class Core_Block_Template extends Core_Block_Abstract
     }
     public function setTemplate($template)
     {
-        return $this->template = $template;
+        $this->template = $template;
+        return $this;
     }
     public function getTemplate()
     {
