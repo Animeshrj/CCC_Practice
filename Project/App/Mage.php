@@ -47,6 +47,7 @@ class Mage
         }
         return self::$baseUrl;
     }
+    
 }
 
 ?>

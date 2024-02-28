@@ -9,7 +9,8 @@ class Page_Controller_index extends Core_Controller_Front_Action
             ->addJS('header.js')
             ->addCSS('footer.css')
             ->addJS('footer.js')
-            ->addCSS('banner.css');
+            ->addCSS('banner.css')
+            ->addCSS('list.css');
 
         $banner = $layout->createBlock('Core/template')
             ->setTemplate('banner/banner.phtml');

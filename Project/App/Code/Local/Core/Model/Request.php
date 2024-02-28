@@ -6,12 +6,12 @@ class Core_Model_Request
     protected $_actionName;
     public function __construct()
     {
-     
+
         $uri = $this->getRequestURI();
-		$uri = array_filter(explode("/", $uri));
-		$this->_getModuleName = isset($uri[0]) ? $uri[0] : 'Page';
-		$this->_getControllerName = isset($uri[1]) ? $uri[1] : 'index';
-		$this->_actionName = isset($uri[2]) ? $uri[2] : 'index';
+        $uri = array_filter(explode("/", $uri));
+        $this->_getModuleName = isset($uri[0]) ? $uri[0] : 'Page';
+        $this->_getControllerName = isset($uri[1]) ? $uri[1] : 'index';
+        $this->_actionName = isset($uri[2]) ? $uri[2] : 'index';
     }
     public function getModuleName()
     {
@@ -37,6 +37,7 @@ class Core_Model_Request
             : (isset($_REQUEST[$key])
                 ? $_REQUEST[$key]
                 : '');
+
     }
 
     public function getPostData($key = '')
@@ -68,14 +69,13 @@ class Core_Model_Request
     {
         $url = $_SERVER['REQUEST_URI'];
         $url_view = str_replace("/PhpPractice/Project/", "", $url);
-        if(str_contains($url_view, '?'))
-        {
+        if (str_contains($url_view, '?')) {
             $pos = strpos($url_view, '?');
-            $temp_uri = substr($url_view,$pos);
-            $uri = str_replace($temp_uri,"",$url_view);
+            $temp_uri = substr($url_view, $pos);
+            $uri = str_replace($temp_uri, "", $url_view);
             return $uri;
         }
-   
+
         return $url_view;
     }
 }

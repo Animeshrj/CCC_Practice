@@ -5,7 +5,9 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
     {
         $data = $this->getRequest()->getParams('Product');
         $product = Mage::getModel('Catalog/Product')
-            ->setData($data)->save();
+            ->setData($data)
+            ->save()
+            ->getId();
         // echo"<pre>";      
         print_r($product);
         // return $product;
@@ -16,6 +18,8 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
         $product_model = Mage::getModel("Catalog/Product")->load($id);
         $product_model->setId($id);
         $product_model->delete();
+        return $product_model;
+        // ($product_model);
     }
     public function listAction()
     {
@@ -23,7 +27,8 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
         $layout = $this->getlayout();
         $child = $layout->getChild('content');
         $layout->getChild('head')->addCSS('header.css')
-            ->addCSS('footer.css');
+            ->addCSS('footer.css')
+            ->addCSS('list.css');
         $productlist = $layout->createBlock('Catalog/admin_product_list');
         $child->addChild('list', $productlist);
         $layout->toHtml();
@@ -36,10 +41,13 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
         $layout->getChild('head')->addCSS('header.css')
             ->addCSS('footer.css')
             ->addCSS('form.css');
-        $productform = $layout->createBlock('Catalog/admin_product');
+        $productform = $layout->createBlock('Catalog/admin_product_form')
+            ->setTemplate('Catalog/Admin/Product/Form.phtml');
         $content->addChild('form', $productform);
         $layout->toHtml();
     }
-    
-    
+
+
+
+
 }

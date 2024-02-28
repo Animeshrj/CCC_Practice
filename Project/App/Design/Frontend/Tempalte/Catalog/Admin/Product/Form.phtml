@@ -1,3 +1,5 @@
+<?php $product_model = $this->getProduct() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,52 +14,61 @@
         <div class='class1'>
             <form action="<?php echo Mage::getBaseUrl('admin/catalog_product/save') ?>" method="post">
                 <h2>Product Form</h2>
+                <input type="hidden" name="Product[product_id]" value="<?php echo $product_model->getProduct_id() ?>">
                 <label for="name">Name:</label><br>
-                <input type="text" id="name" name="Product[name]"><br>
+                <input type="text" id="name" name="Product[name]" value="<?php echo $product_model->getName() ?>"><br>
 
                 <label for="sku">SKU:</label><br>
-                <input type="text" id="sku" name="Product[sku]"><br>
+                <input type="text" id="sku" name="Product[sku]" value="<?php echo $product_model->getsku() ?>"><br>
 
 
                 <label for="color">Color:</label><br>
-                <input type="text" id="color" name="Product[color]"><br>
+                <input type="text" id="color" name="Product[color]"
+                    value="<?php echo $product_model->getColor() ?>"><br>
 
                 <label for="size">Size:</label><br>
-                <input type="text" id="size" name="Product[size]"><br>
+                <input type="text" id="size" name="Product[size]" value="<?php echo $product_model->getSize() ?>"><br>
 
                 <label for="description">Description:</label><br>
-                <textarea id="description" name="Product[description]"></textarea><br>
+                <textarea id="description" name="Product[description]"
+                    value="<?php echo $product_model->getDescription() ?>"></textarea><br>
 
                 <label for="image_link">Image Link:</label><br>
-                <input type="text" id="image_link" name="Product[image_link]"><br>
+                <input type="text" id="image_link" name="Product[image_link]"
+                    value="<?php echo $product_model->getimageLink() ?>"><br>
 
                 <label for="link">Link:</label><br>
-                <input type="text" id="link" name="Product[link]"><br>
+                <input type="text" id="link" name="Product[link]" value="<?php echo $product_model->getLink() ?>"><br>
 
-                <label for="category_id">Category ID:</label><br>
-                <input type="text" id="category_id" name="Product[category_id]"><br>
+                <!-- <label for="category_id">Category ID:</label><br>
+                <input type="text" id="category_id" name="Product[category_id]" value=""><br> -->
 
                 <label for="price">Price:</label><br>
-                <input type="text" id="price" name="Product[price]"><br>
+                <input type="text" id="price" name="Product[price]"
+                    value="<?php echo $product_model->getPrice() ?>"><br>
 
                 <label for="mfr_cost">Manufacturer Cost:</label><br>
-                <input type="text" id="mfr_cost" name="Product[mfr_cost]"><br>
+                <input type="text" id="mfr_cost" name="Product[mfr_cost]"
+                    value="<?php echo $product_model->getMfrCost() ?>"><br>
 
                 <label for="shipping_cost">Shipping Cost:</label><br>
-                <input type="text" id="shipping_cost" name="Product[shipping_cost]"><br>
+                <input type="text" id="shipping_cost" name="Product[shipping_cost]"
+                    value="<?php echo $product_model->getShippingCost() ?>"><br>
 
                 <label for="total_cost">Total Cost:</label><br>
-                <input type="text" id="total_cost" name="Product[total_cost]"><br>
+                <input type="text" id="total_cost" name="Product[total_cost]"
+                    value="<?php echo $product_model->gettotal_cost() ?>"><br>
 
                 <label for="margin_percentage">Margin Percentage:</label><br>
-                <input type="text" id="margin_percentage" name="Product[margin_percentage]"><br>
+                <input type="text" id="margin_percentage" name="Product[margin_percentage]"
+                    value="<?php echo $product_model->getMarginPercentage() ?>"><br>
 
                 <label for="min_price">Minimum Price:</label><br>
                 <input type="text" id="min_price" name="Product[min_price]"><br>
 
-                <label for="status">Status:</label><br>
-                <input type="radio" id="status" name="Product[status]">Active
-                <input type="radio" id="status" name="Product[status]">Disactive<br>
+                <label for="status" name="Product[status]">Status:</label><br>
+                <input type="radio" id="status" value="0">Active
+                <input type="radio" id="status" name="1">Disactive<br>
 
                 <input type="submit" value="Submit">
             </form>

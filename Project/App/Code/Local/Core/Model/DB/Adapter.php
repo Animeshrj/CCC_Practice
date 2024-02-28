@@ -27,28 +27,12 @@ class Core_Model_DB_Adapter
     public function fetchAll($query)
     {
         $row = [];
-        $this->connect();
-        $result = mysqli_query($this->connect,$query);
-        if($result->num_rows > 0 )
-        echo "<table style='border:2px solid black;'>";
-        echo"<tr>";
-        while ($_row = mysqli_fetch_assoc($result)) {
-            foreach($_row as $key => $value)
-            {
-                echo "<th style='border:2px solid black;'>". $key . "</th>";
-
-            }
-            break;
+        $sql = mysqli_query($this->connect(),$query);
+        while($_row = mysqli_fetch_assoc($sql))
+        {
+            $row[] = $_row;
         }
-        echo "</tr>";
-
-        while ($_row = mysqli_fetch_assoc($result)) {
-            echo"<tr>";
-            foreach($_row as $key => $value)
-            echo "<th style='border:2px solid black;'>". $value . "</th>";
-        }
-        echo"</tr>";
-        echo"</table>";
+        return $row;
 
     }
     public function fetchPairs($query)
@@ -59,10 +43,7 @@ class Core_Model_DB_Adapter
     }
     public function fetchRow($query)
     {
-
         $row = [];
-
-        // print_r($this->connect);
         $result = mysqli_query($this->connect(), $query);
         while ($_row = mysqli_fetch_assoc($result)) {
             $row = $_row;
@@ -72,7 +53,7 @@ class Core_Model_DB_Adapter
     public function insert($query)
     {
         $sql = mysqli_query($this->connect(), $query);
-        echo $sql;
+        // echo $sql;
         if ($sql) {
             echo "<script>alert('Data inserted Succsessfully!')</script>";
             return mysqli_insert_id($this->connect());
@@ -84,17 +65,28 @@ class Core_Model_DB_Adapter
     }
     public function update($query)
     {
+        if(mysqli_query($this->connect(),$query))
+        {
+            echo"<script>alert('Data Updated Succsessfully!')</script>";
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public function delete($query)
     {
         $sql = mysqli_query($this->connect(), $query);
+        echo $sql;
         if($sql)
         {
             echo "<script>alert('Data deleted Succsessfully!')</script>";
+            return true;
         }
         else
         {
-            return False;
+            return false;
         }
     }
     public function query($query)
