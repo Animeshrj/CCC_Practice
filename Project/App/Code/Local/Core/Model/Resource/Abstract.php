@@ -33,61 +33,31 @@ class Core_Model_Resource_Abstract
     public function save($product)
     {
         $data = $product->getData();
-        if ($data[$this->getPrimaryKey()] !== '') {
+        if ($product->getId() !== '') {
             $sql = $this->updateSql(
                 $this->getTableName(),
                 $data,
                 [$this->getPrimaryKey() => $product->getId()]
             );
             $this->getAdapter()->update($sql);
-            header('Location:http://localhost/PhpPractice/Project/admin/catalog_product/list');
 
         } else {
 
             $sql = $this->insertSql($this->getTableName(), $data);
             $id = $this->getAdapter()->insert($sql);
             $product->setId($id);
-            header('Location:http://localhost/PhpPractice/Project/admin/catalog_product/list');
 
         }
 
         // header("Location: ". Mage::getBaseUrl('Admin/Catalog_Product/list'));
     }
-    public function categorySave($product)
-    {
-        $data = $product->getData();
-        if ($data[$this->getPrimaryKey()] !== '') {
-            $sql = $this->updateSql(
-                $this->getTableName(),
-                $data,
-                [$this->getPrimaryKey() => $product->getId()]
-            );
-            $this->getAdapter()->update($sql);
-            header('Location:http://localhost/PhpPractice/Project/admin/catalog_category/list');
 
-        } else {
-
-            $sql = $this->insertSql($this->getTableName(), $data);
-            $id = $this->getAdapter()->insert($sql);
-            $product->setId($id);
-            header('Location:http://localhost/PhpPractice/Project/admin/catalog_category/list');
-
-        }
-
-        // header("Location: ". Mage::getBaseUrl('Admin/Catalog_Product/list'));
-    }
-    public function delete(Catalog_Model_Product $product)
+    public function delete(Core_Model_Abstract $product)
     {
         $sql = $this->deleteSql($this->getTableName(), [$this->getPrimaryKey() => $product->getId()]);
         $this->getAdapter()->delete($sql);
-        header('Location:http://localhost/PhpPractice/Project/admin/catalog_product/list');
     }
-    public function categoryDelete(Catalog_Model_Category $category)
-    {
-        $sql = $this->deleteSql($this->getTableName(), [$this->getPrimaryKey() => $category->getId()]);
-        $this->getAdapter()->delete($sql);
-        header('Location:http://localhost/PhpPractice/Project/admin/catalog_category/list');
-    }
+
     public function insertSql($tbname, $data)
     {
         $columns = $values = [];

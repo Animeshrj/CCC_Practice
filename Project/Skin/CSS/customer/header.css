@@ -12,7 +12,7 @@
     text-transform: uppercase;
     /* overflow: hidden; */
     width: 100vw;
-    /* margin-top: -40px; */
+    margin-top: -40px;
     
     .logoWrapper {
       display: flex;

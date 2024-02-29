@@ -34,11 +34,11 @@
                     value="<?php echo $product_model->getDescription() ?>"></textarea><br>
 
                 <label for="image_link">Image Link:</label><br>
-                <input type="text" id="image_link" name="Product[image_link]"
+                <input type="file" id="image_link" name="Product[image_link]"
                     value="<?php echo $product_model->getimageLink() ?>"><br>
 
                 <label for="link">Link:</label><br>
-                <input type="text" id="link" name="Product[link]" value="<?php echo $product_model->getLink() ?>"><br>
+                <input type="file" id="link" name="Product[link]" value="<?php echo $product_model->getLink() ?>"><br>
 
                 <!-- <label for="category_id">Category ID:</label><br>
                 <input type="text" id="category_id" name="Product[category_id]" value=""><br> -->
@@ -66,9 +66,9 @@
                 <label for="min_price">Minimum Price:</label><br>
                 <input type="text" id="min_price" name="Product[min_price]"><br>
 
-                <label for="status" name="Product[status]">Status:</label><br>
-                <input type="radio" id="status" value="0">Active
-                <input type="radio" id="status" name="1">Disactive<br>
+                <label for="status">Status:</label><br>
+                <input type="radio" id="status" name="Product[status]" value="1">Active
+                <input type="radio" id="status" name="Product[status]" value="0">Disactive<br>
 
                 <input type="submit" value="Submit">
             </form>

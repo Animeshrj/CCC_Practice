@@ -1,11 +1,11 @@
 <?php
 $categoryCollection = Mage::getModel('Catalog/Category')->getCollection();
+?>
 // print_r($categoryCollection->getData());
 // foreach ($productCollection->getData() as $product) {
 //     var_dump($product->getProductId());
 //     // print_r($product);
 // }
-?>
 
 
 
@@ -31,7 +31,7 @@ $categoryCollection = Mage::getModel('Catalog/Category')->getCollection();
                         <?php echo $category->getcategoryId(); ?>
                     </td>
                     <td>
-                        <?php echo $category->getcategoryname(); ?>
+                        <?php echo $category->getcategory_name(); ?>
                     </td>
                     <td>
                         <?php echo $category->getStatus(); ?>
@@ -58,12 +58,7 @@ $categoryCollection = Mage::getModel('Catalog/Category')->getCollection();
 <script>
     $(document).ready(function () {
         $('#productTable').DataTable({
-            // You can add options for DataTables here
-            // Example:
-            // "paging": true,
-            // "ordering": true,
-            // "info": true,
-            // "searching": true
+          
         });
     });
 </script>

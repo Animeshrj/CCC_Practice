@@ -1,0 +1,9 @@
+<div class="login-container">
+    <form id="login-form" action="<?php echo Mage::getBaseUrl('customer/account/loginPost') ?>" method="post">
+        <h2>Login</h2>
+        <input type="email" id="username" placeholder="Email_ID" name="customer[customer_email]" required>
+        <input type="password" id="password" placeholder="Password" name="customer[password]" required>
+        <button type="submit">Login</button>
+        <a href="http://">forgotPassword</a>
+    </form>
+</div>

@@ -5,6 +5,7 @@ class Mage
     private static $registry = [];
     private static $BaseDir = 'C:\xampp\htdocs\PhpPractice\Project';
     private static $baseUrl = "http://localhost/PhpPractice/Project";
+    private static $_singleTon = null;
     public static function init()
     {
 
@@ -47,7 +48,19 @@ class Mage
         }
         return self::$baseUrl;
     }
+
     
+    public static function getSingleton($className)
+    {
+
+        if (isset(self::$_singleTon[$className])) {
+            return self::$_singleTon[$className];
+
+        } else {
+
+            return self::$_singleTon[$className] = self::getModel($className);
+        }
+    }
 }
 
 ?>

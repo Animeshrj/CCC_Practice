@@ -1,6 +1,7 @@
 <?php
-class Admin_Controller_Catalog_Category extends Core_Controller_Front_Action
+class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
 {
+    protected $_allowedActions = ['form','list'];
     public function formAction()
     {
         $layout = $this->getlayout();
@@ -19,7 +20,9 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Front_Action
         $data = $this->getRequest()->getParams('category');
         Mage::getModel('Catalog/Category')
             ->setData($data)
-            ->categorySave();
+            ->save();
+            $this->setRedirect('admin/catalog_category/list');
+
 
     }
     public function deleteAction()
@@ -27,8 +30,10 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Front_Action
         $id = $this->getRequest()->getParams('id');
         $category_model = Mage::getModel("Catalog/Category")->load($id);
         $category_model->setId($id);
-        $category_model->categoryDelete();
+        $category_model->delete();
+        $this->setRedirect('admin/catalog_category/list');
         return $category_model;
+
 
     }
     public function listAction()

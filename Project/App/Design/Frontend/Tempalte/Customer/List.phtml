@@ -1,0 +1,108 @@
+
+
+</head>
+
+<body>
+
+    <h2>Customer Details</h2>
+
+    <table id="customerTable">
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Billing Address</th>
+                <th>Billing City</th>
+                <th>Billing Region</th>
+                <th>Billing Country</th>
+                <th>Billing Phone</th>
+                <th>Shipping City</th>
+                <th>Shipping Region</th>
+                <th>Shipping Country</th>
+                <th>Shipping Phone</th>
+                <th>Default</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($customerCollection->getData() as $customer): ?>
+                <tr>
+                    <td>
+                        <?php echo $customer->getcustomer_id(); ?>
+                    </td>
+                    <td>
+                        <?php echo $customer->getcustomer_email(); ?>
+                    </td>
+                    <td>
+                        <?php echo $customer->getfirst_name(); ?>
+                    </td>
+                    <td>
+                        <button class="edit-button"
+                            onclick="window.location.href='form?id=<?php echo $customer->getId(); ?>'">Edit</button>
+                    </td>
+                    <td>
+                        <button class="delete-button"
+                            onclick="window.location.href='delete?id=<?php echo $customer->getId(); ?>'">Delete</button>
+                    </td>
+
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <script>
+        // Sample data
+        // const customers = [
+        //     { 
+        //         customer_id: 1,
+        //         customer_email: "example1@example.com",
+        //         first_name: "John",
+        //         last_name: "Doe",
+        //         billing_address: "123 Main St",
+        //         billing_city: "New York",
+        //         billing_region: "NY",
+        //         billing_country: "USA",
+        //         billing_phone: "123-456-7890",
+        //         shipping_address: "123 Main St",
+        //         shipping_city: "New York",
+        //         shipping_region: "NY",
+        //         shipping_country: "USA",
+        //         shipping_phone: "123-456-7890",
+        //         default: true
+        //     },
+        //     { 
+        //         customer_id: 2,
+        //         customer_email: "example2@example.com",
+        //         first_name: "Jane",
+        //         last_name: "Smith",
+        //         billing_address: "456 Oak St",
+        //         billing_city: "Los Angeles",
+        //         billing_region: "CA",
+        //         billing_country: "USA",
+        //         billing_phone: "987-654-3210",
+        //         shipping_address: "456 Oak St",
+        //         shipping_city: "Los Angeles",
+        //         shipping_region: "CA",
+        //         shipping_country: "USA",
+        //         shipping_phone: "987-654-3210",
+        //         default: false
+        //     }
+        // ];
+
+        const table = document.getElementById('customerTable');
+
+        customers.forEach(customer => {
+            const row = table.insertRow();
+            Object.values(customer).forEach(value => {
+                const cell = row.insertCell();
+                cell.textContent = value;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

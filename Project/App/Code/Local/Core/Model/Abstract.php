@@ -8,7 +8,7 @@ class Core_Model_Abstract
     protected $_collectionClass = '';
     protected $resource = null;
     protected $collection = null;
-
+    protected $_modelclass = null;
 
     public function __construct()
     {
@@ -119,11 +119,6 @@ class Core_Model_Abstract
         $this->getResource()->save($this);
         return $this;
     }
-    public function categorySave()
-    {
-        $this->getResource()->categorySave($this);
-        return $this;
-    }
 
     public function load($id = '', $column = null)
     {
@@ -141,13 +136,6 @@ class Core_Model_Abstract
     {
         if ($this->getId() !== "") {
             $this->getResource()->delete($this);
-        }
-        return $this;
-    }
-    public function categoryDelete()
-    {
-        if ($this->getId() !== "") {
-            $this->getResource()->categoryDelete($this);
         }
         return $this;
     }
