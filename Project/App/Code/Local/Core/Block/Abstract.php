@@ -29,6 +29,7 @@ class Core_Block_Abstract
     public function addData($key, $value)
     {
         $this->data[$key] = $value;
+        return $this;
     }
     public function getData($key = null)
     {
@@ -36,7 +37,7 @@ class Core_Block_Abstract
     }
     public function setData($data)
     {
-        $this->_data = $data;
+        $this->data = $data;
         return $this;
     }
     // public function getUrl($action = null, $controller = null, $params = [], $resetParams = false)

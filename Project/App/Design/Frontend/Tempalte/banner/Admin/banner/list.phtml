@@ -1,0 +1,61 @@
+<?php $banner = Mage:: getModel("Banner/banner")->getCollection()?>
+
+</head>
+
+<body>
+
+    <h2>Customer Details</h2>
+
+    <table id="customerTable">
+        <thead>
+            <tr>
+                <th>Banner ID</th>
+                <th>Banner_image</th>
+                <th>Status</th>
+                <th>show_on</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($banner->getData() as $ban): ?>
+                <tr>
+                    <td>
+                        <?php echo $ban->getbanner_id(); ?>
+                    </td>
+                    <td>
+                        <?php echo $ban->getbanner_image(); ?>
+                    </td>
+                    <td>
+                        <?php echo $ban->getstatus(); ?>
+                    </td>
+                    <td>
+                        <button class="edit-button"
+                            onclick="window.location.href='form?id=<?php echo $ban->getId(); ?>'">Edit</button>
+                    </td>
+                    <td>
+                        <button class="delete-button"
+                            onclick="window.location.href='delete?id=<?php echo $ban->getId(); ?>'">Delete</button>
+                    </td>
+
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- <script>
+        
+        const table = document.getElementById('customerTable');
+
+        customers.forEach(customer => {
+            const row = table.insertRow();
+            Object.values(customer).forEach(value => {
+                const cell = row.insertCell();
+                cell.textContent = value;
+            });
+        });
+    </script> -->
+
+</body>
+
+</html>

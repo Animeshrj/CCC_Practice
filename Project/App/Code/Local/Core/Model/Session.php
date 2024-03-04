@@ -3,10 +3,10 @@ class Core_Model_Session
 {
     public function __construct()
     {
-        // if(is_null($_SESSION)){
-        // if (is_null($_SESSION) || !isset($_SESSION)) {
+        if (!isset($_SESSION)) {
             session_start();
-        // }
+        }
+
     }
     public function getId()
     {
@@ -27,8 +27,9 @@ class Core_Model_Session
         $_SESSION[$key] = $value;
         return $this;
     }
-    public function remove($key){
-        if(isset($_SESSION[$key])) {
+    public function remove($key)
+    {
+        if (isset($_SESSION[$key])) {
             unset($_SESSION[$key]);
         }
     }

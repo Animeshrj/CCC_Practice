@@ -1,48 +1,69 @@
 <?php
 class Customer_Controller_Account extends Core_Controller_Front_Action
 {
-    protected $_allowedAction = ['login', 'form'];
+    protected $_allowedAction = ['login', 'register'];
     public function init()
     {
         // $this->getRequest()->getAction
         if (
             !in_array($this->getRequest()->getActionName(), $this->_allowedAction) &&
-            !Mage::getSingleton('Core/Session')->get('logged_in_admin_user_id')
+            !Mage::getSingleton('Core/Session')->get('logged_in_customer_id')
         ) {
 
-            $this->setRedirect("");
+            $this->setRedirect('customer/account/login');
         }
     }
     public function saveAction()
     {
         $data = $this->getRequest()->getParams('customer');
-        print_r($data);
-
+        // print_r($data);
         Mage::getModel('Customer/Account')
             ->setData($data)
             ->save();
+        $this->setRedirect('customer/account/login');
 
     }
-    public function formAction()
+    public function registerAction()
     {
         $layout = $this->getlayout();
         $content = $layout->getChild('content');
-        $customerForm = $layout->createBlock('Customer/account_register');
+        $customerRegister = $layout->createBlock('Customer/account_register');
         $layout->getChild('head')->addCSS('customer/header.css')
             ->addCSS('footer.css')
             ->addCSS('customer/customer.css')
             // ->addJS('customer/customer.js')
             ->addJS('customer/header.js');
-        $content->addChild('form', $customerForm);
+        $content->addChild('customerRegister', $customerRegister);
         $layout->toHtml();
+    }
+    public function saveRegisterAction()
+    {
+        $registerData = $this->getRequest()->getParams('customer');
+        Mage::getModel('customer/account')
+            ->setData($registerData)
+            ->save();
+
     }
     public function dashBoardAction()
     {
-
+        $layout = $this->getlayout();
+        $content = $layout->getChild('content');
+        $customerDashboard = $layout->createBlock('customer/account_dashboard');
+        $content->addChild('customerDashboard', $customerDashboard);
+        $layout->toHtml();
     }
-    public function forgotPassword()
+    public function forgotPasswordAction()
     {
-
+        $layout = $this->getlayout();
+        $content = $layout->getChild('content');
+        $layout->getChild('head')->addCSS('customer/header.css')
+            ->addCSS('footer.css')
+            ->addCSS('customer/customer.css')
+            ->addCSS('form.css')
+            ->addJS('customer/header.js');
+        $customerForgot = $layout->createBlock('customer/account_forgotPassword');
+        $content->addChild('customerForget', $customerForgot);
+        $layout->toHtml();
     }
     public function listAction()
     {
@@ -58,40 +79,30 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
     }
     public function loginAction()
     {
-        $layout = $this->getlayout();
-        $content = $layout->getChild('content');
-        $layout->getChild('head')->addCSS('header.css')
-            ->addCSS('customer/login.css')
-            ->addCSS('footer.css')
-            ->addJS('customer/login.js');
-        $customerlogin = $layout->createBlock('Customer/account_login');
-        $content->addChild('login', $customerlogin);
-        $layout->toHtml();
-    }
-    public function loginPostAction()
-    {
-        $data = $this->getRequest()->getParams('customer');
-        $email = $data['customer_email'];
-        $password = $data['password'];
-        die;
-        $customerCollection = Mage::getModel('Customer/Account')->getCollection()
-            ->addFieldToFilter('customer_email', $email)
-            ->addFieldToFilter('password', $password);
+        if (!$this->getRequest()->isPost()) {
 
-        $count = 0;
-        $customerId = 0;
-
-        foreach ($customerCollection->getData() as $customer) {
-            $count++;
-            $customerId = $customer->getID();
-        }
-        if ($count == 1) {
-            echo "success";
-            Mage::getSingleton('core/session')->set('logged_in_customer_id', $customerId);
-            die;
+            $layout = $this->getlayout();
+            $content = $layout->getChild('content');
+            $customerlogin = Mage::getBlock('customer/account_login');
+            $layout->getChild('head')->addCSS('header.css')
+                ->addCSS('customer/login.css')
+                ->addCSS('footer.css');
+            // ->addJS('customer/login.js');
+            $content->addChild('customerlogin', $customerlogin);
+            $layout->toHtml();
+       
         } else {
-            echo "Login failed";
-            die;
+            $loginModel = Mage::getModel('customer/account');
+            $login = $loginModel->setData($this->getRequest()->getPostData('login'))->login();
+            $this->setRedirect(($login) ? '' : 'customer/account/login');
         }
+    }
+
+    public function logoutAction()
+    {
+        $session = Mage::getSingleton('core/session');
+        $session->remove('logged_in_customer_id');
+        echo "<script>alert:logout successfully</script>";
+        $this->setRedirect('customer/account/login');
     }
 }

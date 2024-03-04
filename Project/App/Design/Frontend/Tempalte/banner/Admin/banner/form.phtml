@@ -1,0 +1,16 @@
+<div class="form">
+    <div class="class1">
+        <form action="<?php echo Mage::getBaseUrl('admin/banner/save')?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="banner[banner_id]">
+
+            <label for="">banner_image</label>
+            <input type="file" name="banner_image" style="border:1px solid black">
+            <label for="">Status</label>
+            <select id="status" name="banner[status]">
+                <option value="0">Active</option>
+                <option value="1">Disactive</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>

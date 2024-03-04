@@ -5,6 +5,7 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
     public function saveAction()
     {
         $data = $this->getRequest()->getParams('Product');
+        $data["image_link"] = $this->uploadFile($_FILES["image_link"]);
         Mage::getModel('Catalog/Product')
             ->setData($data)
             ->save()
@@ -32,9 +33,10 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
         $layout->getChild('head')->addCSS('header.css')
             ->addCSS('footer.css')
             ->addCSS('list.css');
-        $productlist = $layout->createBlock('Catalog/admin_product_list');
-        $child->addChild('list', $productlist);
+        $productList = $layout->createBlock('Catalog/admin_product_list');
+        $child->addChild('productList', $productList);
         $layout->toHtml();
+
     }
 
     public function formAction()
@@ -45,10 +47,21 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
             ->addCSS('footer.css')
             ->addCSS('form.css');
         $productform = $layout->createBlock('Catalog/admin_product_form');
-        $content->addChild('form', $productform);
+        if ($this->getRequest()->getParams('id'))
+            $data = Mage::getModel('catalog/product')->getResource()->load($this->getRequest()->getParams('id'));
+        $productform->setData(Mage::getModel('catalog/product')->setData(isset($data) ? $data : null));
+        $content->addChild('productForm', $productform);
         $layout->toHtml();
-    }
 
+    }
+    public function uploadFile($image)
+    {
+        $fileName = $image['name'];
+        $tmp_name = $image["tmp_name"];
+        $targetFile = Mage::getBaseDir('skin/image/media/product/') . $fileName;
+        move_uploaded_file($tmp_name, $targetFile);
+        return $fileName;
+    }
 
 
 

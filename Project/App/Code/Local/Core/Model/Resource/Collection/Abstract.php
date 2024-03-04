@@ -6,6 +6,7 @@ class Core_Model_Resource_Collection_Abstract
     protected $_resource = null;
     protected $_select = [];
     protected $_data = [];
+    protected $_model = null;
 
     public function setResource($resource)
     {
@@ -59,18 +60,24 @@ class Core_Model_Resource_Collection_Abstract
             }
             $sql .= " WHERE " . implode(" AND ", $whereCondition);
         }
-        $modelClass = Mage::getModel('Core/Request')->getControllerName();
-        $modelClass = str_replace("_", "/", $modelClass);
+
         $result = $this->_resource->getAdapter()->fetchAll($sql);
+      
+        // die;
         foreach ($result as $row) {
-            $this->_data[] = Mage::getModel($modelClass)->setData($row);
+            $this->_data[] = Mage::getModel($this->_model)->setData($row);
         }
+
+    }
+    public function setModelClass($modelClass)
+    {
+        $this->_model = $modelClass;
+        return $this;
     }
 
     public function getData()
     {
         $this->load();
-        // print_r($this->_data);
         return $this->_data;
     }
 }

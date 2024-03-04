@@ -12,7 +12,8 @@
 <body>
     <div class="form">
         <div class='class1'>
-            <form action="<?php echo Mage::getBaseUrl('admin/catalog_product/save') ?>" method="post">
+            <form action="<?php echo Mage::getBaseUrl('admin/catalog_product/save') ?>" method="post"
+                enctype="multipart/form-data">
                 <h2>Product Form</h2>
                 <input type="hidden" name="Product[product_id]" value="<?php echo $product_model->getProduct_id() ?>">
                 <label for="name">Name:</label><br>
@@ -34,7 +35,7 @@
                     value="<?php echo $product_model->getDescription() ?>"></textarea><br>
 
                 <label for="image_link">Image Link:</label><br>
-                <input type="file" id="image_link" name="Product[image_link]"
+                <input type="file" id="image_link" name="image_link"
                     value="<?php echo $product_model->getimageLink() ?>"><br>
 
                 <label for="link">Link:</label><br>

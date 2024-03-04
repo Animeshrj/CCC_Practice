@@ -49,7 +49,7 @@ class Mage
         return self::$baseUrl;
     }
 
-    
+
     public static function getSingleton($className)
     {
 

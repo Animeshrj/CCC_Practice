@@ -8,7 +8,7 @@ class Core_Model_Abstract
     protected $_collectionClass = '';
     protected $resource = null;
     protected $collection = null;
-    protected $_modelclass = null;
+    protected $_modelClass = '';
 
     public function __construct()
     {
@@ -46,11 +46,17 @@ class Core_Model_Abstract
     {
         return new $this->_resourceClass();
     }
+    public function getModelClass()
+    {
+        return $this->_modelClass;
+    }
 
     public function getCollection()
     {
+        // echo "collection";
         $collection = new $this->_collectionClass();
         $collection->setResource($this->getResource());
+        $collection->setModelClass($this->getModelClass());
         $collection->select();
         return $collection;
     }
@@ -126,11 +132,6 @@ class Core_Model_Abstract
         return $this;
     }
     // -------------------------------------------------------------
-    public function loadAllData($id = '', $column = null)
-    {
-        $rows = $this->getResource()->temp_load($id, $column);
-        return $rows;
-    }
     // -------------------------------------------------------------
     public function delete()
     {

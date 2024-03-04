@@ -1,7 +1,6 @@
 <?php
 class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
 {
-    protected $_allowedActions = ['form','list'];
     public function formAction()
     {
         $layout = $this->getlayout();
@@ -10,7 +9,7 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
             ->addCSS('footer.css')
             ->addCSS('form.css')
             ->addCSS('header.css');
-        $categoryForm = $layout->createBlock('Catalog/admin_category_form')
+        $categoryForm = $layout->createBlock('catalog/admin_category_form')
             ->setTemplate('Catalog/Admin/Category/Form.phtml');
         $content->addChild('form', $categoryForm);
         $layout->toHtml();
@@ -32,7 +31,7 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
         $category_model->setId($id);
         $category_model->delete();
         $this->setRedirect('admin/catalog_category/list');
-        return $category_model;
+        // return $category_model;
 
 
     }

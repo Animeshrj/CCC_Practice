@@ -12,9 +12,8 @@ class Page_Controller_index extends Core_Controller_Front_Action
             ->addCSS('banner.css')
             ->addCSS('list.css');
 
-        $banner = $layout->createBlock('Core/template')
-            ->setTemplate('banner/banner.phtml');
-        // echo get_class($banner);
+    
+        $banner = Mage::getBlock('banner/banner');
         $layout->getChild('content')
             ->addChild('banner', $banner)
             ->addChild('banner', $banner);

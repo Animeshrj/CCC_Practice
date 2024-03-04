@@ -2,6 +2,7 @@
 
 class Core_Model_Resource_Abstract
 {
+    protected $_model = "";
     protected $_tablename = "";
     protected $_primaryKey = "";
     public function init($tableName, $primaryKey)
@@ -98,5 +99,17 @@ class Core_Model_Resource_Abstract
         $whereCond = implode(" AND ", $whereCond);
         return "UPDATE {$tablename} SET {$coloumns} WHERE {$whereCond}";
 
+    }
+
+    public function filterNewData($new, $old)
+    {
+        $new = array_filter($new, function ($value, $key) use ($old) {
+            return ($old[$key] != $value);
+        }, ARRAY_FILTER_USE_BOTH);
+        return $new;
+    }
+    public function getModel()
+    {
+        return $this->_model;
     }
 }

@@ -1,9 +1,11 @@
 <div class="login-container">
-    <form id="login-form" action="<?php echo Mage::getBaseUrl('customer/account/loginPost') ?>" method="post">
+    <form id="login-form" action="<?php echo $this->getUrl('customer/account/login') ?>" method="post">
         <h2>Login</h2>
-        <input type="email" id="username" placeholder="Email_ID" name="customer[customer_email]" required>
-        <input type="password" id="password" placeholder="Password" name="customer[password]" required>
-        <button type="submit">Login</button>
-        <a href="http://">forgotPassword</a>
+
+        <input type="email" id="username" placeholder="Email_ID" name="login[customer_email]" required>
+        <input type="password" id="password" placeholder="Password" name="login[password]" required>
+        <button type="submit" value="Login">Login</button>
+        <a href="/PhpPractice/Project/customer/account/forgotpassword">forgotPassword</a>
+        <a href="/PhpPractice/Project/customer/account/register">Registration</a>
     </form>
 </div>

@@ -1,6 +1,9 @@
 <?php
-$productCollection = Mage::getModel('Catalog/Product')->getCollection();
-// print_r($productCollection->getData());
+echo 'model';
+$productCollection = Mage::getModel('catalog/product')->getCollection();
+print_r($productCollection);
+
+// ->getCollection()
 // foreach ($productCollection->getData() as $product) {
 //     var_dump($product->getProductId());
 //     // print_r($product);
@@ -32,7 +35,8 @@ $productCollection = Mage::getModel('Catalog/Product')->getCollection();
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($productCollection->getData() as $product): ?>
+            <?php foreach ($productCollection->getData() as $product):
+                ?>
                 <tr>
                     <td>
                         <?php echo $product->getProductId(); ?>
