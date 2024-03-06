@@ -13,7 +13,8 @@ class Catalog_Controller_Product extends Core_Controller_Front_Action
         $view->setData($product);
         $layout->getChild('head')->addCSS('header.css')
             ->addCSS('footer.css')
-            ->addCSS('list.css');
+            ->addCSS('list.css')
+            ->addCSS('view.css');
         $child->addChild("view", $view);
         $layout->toHtml();
     }

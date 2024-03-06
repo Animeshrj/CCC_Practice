@@ -5,7 +5,7 @@ class Core_Model_DB_Adapter
         "host" => "localhost",
         "user" => "root",
         "password" => "",
-        "db" => "ccc_project",
+        "db" => "ccc_practice",
     ];
     public $connect = null;
     public function connect()
@@ -27,9 +27,8 @@ class Core_Model_DB_Adapter
     public function fetchAll($query)
     {
         $row = [];
-        $sql = mysqli_query($this->connect(),$query);
-        while($_row = mysqli_fetch_assoc($sql))
-        {
+        $sql = mysqli_query($this->connect(), $query);
+        while ($_row = mysqli_fetch_assoc($sql)) {
             $row[] = $_row;
         }
         return $row;
@@ -65,13 +64,10 @@ class Core_Model_DB_Adapter
     }
     public function update($query)
     {
-        if(mysqli_query($this->connect(),$query))
-        {
-            echo"<script>alert('Data Updated Succsessfully!')</script>";
+        if (mysqli_query($this->connect(), $query)) {
+            echo "<script>alert('Data Updated Succsessfully!')</script>";
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -79,13 +75,10 @@ class Core_Model_DB_Adapter
     {
         $sql = mysqli_query($this->connect(), $query);
         echo $sql;
-        if($sql)
-        {
+        if ($sql) {
             echo "<script>alert('Data deleted Succsessfully!')</script>";
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
