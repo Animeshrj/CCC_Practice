@@ -7,18 +7,29 @@ class BmiCalculator_Model_Calculator extends Core_Model_Abstract
         $this->_collectionClass = "BmiCalculator_Model_Resource_Collection_Calculator";
         $this->_modelClass = "bmicalculator/calculator";
     }
-    public function getWeight()
+   
+
+    public function __beforesave()
     {
-        $mapping = [0 => 'kilogram', 1 => 'pounds'];
-        if (isset($this->_data['weight'])) {
-            return $mapping[$this->_data['weight']];
+        if($this->getWeight() == 'kilogram' )
+        {
+            $result = $this->getWeight();   
+            $this->addData('result', $result);
         }
-    }
-    public function getHeight()
-    {
-        $mapping = [0 => 'meter', 1 => 'foot'];
-        if (isset($this->_data['height'])) {
-            return $mapping[$this->_data['height']];
+        elseif($this->getWeight() == 'pounds')
+        {
+            $result = ($this->getWeight()/2.20462);
+        }
+
+        if($this->getHeight() == 'meter')
+        {
+            $result = $this->getHeight();
+            $this->addData('result', $result);
+        }
+        elseif($this->getHeight()== 'foot')
+        {
+            $result = ($this->getHeight()/3.28084);
+            $this->addData('result',$result);
         }
     }
 }

@@ -13,12 +13,12 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
         return Mage::getModel('catalog/product')->load($this->getProductId());
     }
 
-    protected function _beforeSave()
+    public function _beforeSave()
     {
         if ($this->getProductId()) {
             $price = $this->getProduct()->getPrice();
             $this->addData('price', $price);
-            $this->addData('row_total', $price*$this->getQty());
+            $this->addData('row_total', $price * $this->getQty());
         } else {
         }
     }
@@ -30,7 +30,6 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
             ->addFieldToFilter('quote_id', $quote->getId())
             ->getFirstItem()
         ;
-
         if ($item) {
             $qty = $qty + $item->getQty();
         }

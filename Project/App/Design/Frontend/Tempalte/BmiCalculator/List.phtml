@@ -1,0 +1,55 @@
+<?php $calculatorCollection = Mage::getModel('bmicalculator/calculator')->getCollection()->addFieldtoFilter('result', 'underweight'); ?>
+ani
+<h1>Calculator List</h1>
+
+
+
+
+
+
+
+
+<table id="productTable" class="display">
+    <thead>
+        <tr>
+            <th>User_name</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Result</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($calculatorCollection->getData() as $calculator): ?>
+            <tr>
+                <td>
+                    <?php echo $calculator->getUserName(); ?>
+                </td>
+                <td>
+                    <?php echo $calculator->getWeight(); ?>
+                </td>
+                <td>
+                    <?php echo $calculator->getHeight(); ?>
+                </td>
+                <td>
+                    <?php echo $calculator->getResult(); ?>
+                </td>
+
+
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+</div>
+
+
+<!-- DataTables JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#productTable').DataTable({
+          
+        });
+    });
+</script> -->

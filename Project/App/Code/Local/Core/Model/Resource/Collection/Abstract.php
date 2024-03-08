@@ -80,4 +80,8 @@ class Core_Model_Resource_Collection_Abstract
         $this->load();
         return $this->_data;
     }
+
+    public function getFirstItem(){
+        return $this->getData()[0];
+    }
 }

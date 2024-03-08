@@ -1,21 +1,22 @@
 <h1>calculator</h1>
 
 <form action="<?php echo Mage::getBaseUrl("Bmicalculator/calculator/save") ?>">
-    <input type="text" name="calculator[user_name]" id="">user name
+    <input type="text" name="calculator[user_name]" id="" value="<?php echo $this->sessionName(); ?>">user name
+    <input type="hidden" name="calculator[session_id]" value="<?php echo $this->sessionId(); ?>">
     <br>
     <br>
-    <select id="" value="weight">
-        <option name="calculator[0]">kilogram</option>
-        <option  name="calculator[1]">pounds</option>
+    <select id="" name="calculator[weight_unit]">
+        <option value="kilogram">kilogram</option>
+        <option value="pounds">pounds</option>
     </select>
-    <input type="number" name="calculator[Weight]">Weight
+    <input type="number" name="calculator[weight]">Weight
     <br>
     <br>
-    <select id="" name="height">
-        <option name="calculator[0]">meter</option>
-        <option name="calculator[1]">feet</option>
+    <select id="" name="calculator[height_unit]">
+        <option value="meter">meter</option>
+        <option value="feet">feet</option>
     </select>
-    <input type="number" name="calculator[Height]">height
+    <input type="number" name="calculator[height]">height
     <br>
     <br>
     <input type="submit">

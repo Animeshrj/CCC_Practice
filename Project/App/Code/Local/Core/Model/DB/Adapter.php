@@ -5,7 +5,7 @@ class Core_Model_DB_Adapter
         "host" => "localhost",
         "user" => "root",
         "password" => "",
-        "db" => "ccc_practice",
+        "db" => "ccc_project",
     ];
     public $connect = null;
     public function connect()
