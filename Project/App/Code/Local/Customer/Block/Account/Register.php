@@ -7,12 +7,11 @@ class Customer_Block_Account_Register extends Core_Block_Template
     }
     public function getCustomerRegister()
     {
-        $customerModel = Mage::getModel('Customer/Account');
-        $customerId = $this->getRequest()->getParams('customer_id');
-        print_r($customerId);
-        if ($customerId != '') {
-            $customerModel->load($customerId);
-            return $customerModel;
+        $id = ($this->getRequest()->getParams('id') != '') ? true : false;
+        if ($id) {
+            return Mage::getModel('customer/account')->load($this->getRequest()->getParams('id'));
+        } else {
+            return Mage::getModel('customer/account');
         }
     }
 }

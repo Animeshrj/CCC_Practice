@@ -12,19 +12,29 @@ if ($productId) {
         <div class="view1">
             <div class="view2">
                 <input type="hidden" name="Product_id" value="<?php echo $product->getProductId() ?>">
-                <img src="<?php echo Mage::getBaseUrl("skin/image/media/product/") . $product->getImageLink() ?>"
-                    alt="image not found">
-                <p>Product Name:
-                    <?php echo $product->getname(); ?>
-                </p>
+                <div>
 
-                <p name='price'>Price:
+                    <img src="<?php echo Mage::getBaseUrl("skin/image/media/product/") . $product->getImageLink() ?>"
+                        alt="image not found">
+                </div>
+                <div class="image">
 
-                    <?php echo $product->getprice(); ?>
-                </p>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="qty" min="" value="1">
-                <button type="submit" id="addToCartBtn">Add to Cart</button>
+                    <p>Product Name:
+                        <?php echo $product->getname(); ?>
+                    </p>
+
+                    <p name='price'>Price:
+
+                        <?php echo $product->getprice(); ?>
+                    </p>
+                    <p name='description'>Description:
+
+                        <?php echo $product->getdescription(); ?>
+                    </p>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="qty" min="" value="1">
+                    <button type="submit" id="addToCartBtn">Add to Cart</button>
+                </div>
             </div>
 
         </div>
