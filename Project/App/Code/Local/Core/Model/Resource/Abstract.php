@@ -45,6 +45,7 @@ class Core_Model_Resource_Abstract
         } else {
 
             $sql = $this->insertSql($this->getTableName(), $data);
+
             $id = $this->getAdapter()->insert($sql);
             $product->setId($id);
 

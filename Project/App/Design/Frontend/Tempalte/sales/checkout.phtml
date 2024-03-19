@@ -1,1 +1,98 @@
-<h1>Checkout</h1>
+<div class="view1">
+    <div class="view2">
+
+        <div class="checkout-container" style="display: flex;">
+            <div class="address-cards">
+                <div class="address-card" data-json="">
+
+                </div>
+            </div>
+            <div class="address-form-container">
+                <form action="<?php echo Mage::getBaseUrl('sales/quote/save') ?>" method="post">
+                    <p>Billing Address</p>
+                    <div class="billing-address-container">
+                        <div>
+                            <label for="">Address</label>
+                            <input type="text" name="address[billing_address]" id="bilAdd">
+                        </div>
+                        <div class="row" style="display: flex;gap: 20px;">
+                            <div>
+                                <label for="">City</label>
+                                <input type="text" name="address[billing_city]" id="bilCity">
+                            </div>
+                            <div>
+                                <label for="">Zip-Code</label>
+                                <input type="text" name="address[billing_region]" id="bilZip">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Country</label>
+                            <input type="text" name="address[billing_country]" id="bilCountry">
+                        </div>
+                    </div>
+                    <input type="checkbox" style="width: fit-content;margin: 5px" onclick="toggleAddress()" name=""
+                        id="addCheck">
+                    <label for="addCheck" style="display: inline">shipping address same as billing</label>
+                    <div class="shipping-address-container">
+                        <p>Shipping Address</p>
+                        <div>
+                            <label for="">Address</label>
+                            <input type="text" name="address[shipping_address]" id="shipAdd">
+                        </div>
+                        <div class="row" style="display: flex;gap: 20px;">
+                            <div>
+                                <label for="">City</label>
+                                <input type="text" name="address[shipping_city]" id="shipCity">
+                            </div>
+                            <div>
+                                <label for="">Zip-Code</label>
+                                <input type="text" name="address[shipping_region]" id="shipZip">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Country</label>
+                            <input type="text" name="address[shipping_country]" id="shipCountry">
+                        </div>
+                        <div>
+                            <button type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <div class="payment-method-container">
+                    <p>Payment Method</p>
+                    <div>
+                        <input type="radio" name="payment_method" id="cod">
+                        <label for="cod">Cash on Delivery</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment_method" id="creditcard">
+                        <label for="creditcard">Credit Card</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment_method" id="upi">
+                        <label for="upi">UPI</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let check = document.getElementById('addCheck');
+    function toggleAddress() {
+        if (check.checked) {
+            document.getElementById('shipAdd').value = document.getElementById('bilAdd').value;
+            document.getElementById('shipCity').value = document.getElementById('bilCity').value;
+            document.getElementById('shipZip').value = document.getElementById('bilZip').value;
+            document.getElementById('shipCountry').value = document.getElementById('bilCountry').value;
+        }
+        else {
+            document.getElementById('shipAdd').value = '';
+            document.getElementById('shipCity').value = '';
+            document.getElementById('shipZip').value = '';
+            document.getElementById('shipCountry').value = '';
+        }
+    }
+</script>

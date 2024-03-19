@@ -1,31 +1,37 @@
-<?php //
-// echo $cart->getProductID();
-// echo $cart->getQTY();
-// echo $cart->getPrice(); 
-// echo Mage::getBaseUrl("skin/image/media/product/") 
-// echo $cart->getname();
-// echo $cart->getprice();         ?>
+<?php
+$productData = Mage::getModel('catalog/product')->getCollection();
+$items = $this->getData('items');
+$quote = $this->getData('quote');
+?>
+<div class="cart1">
+    <?php foreach ($items as $item): ?>
+        <div class="cart2">
+            <div>
+                <img src="<?php echo Mage::getBaseUrl("skin/image/media/product/") . $item->getImageLink() ?>"
+                    alt="image not found">
+            </div>
+            <div>
+
+                <p>Product Name:
+                    <?php echo $item->getname(); ?>
+                </p>
+
+                <p name='price'>Price:
+                    <?php echo $item->getPrice() ?>
+                </p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="qty" value="<?php echo $item->getQty() ?>" min="" value="1">
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <p>Grand Total
+        <?php echo $quote->getGrandTotal(); ?>
+    </p>
 
 
-
-
-
-<div class="view1">
-    <div class="view2">
-        <input type="hidden" name="Product_id" value="">
-        <img src="" alt="image not found">
-        <p>Product Name:
-            <?php ?>
-        </p>
-
-        <p name='price'>Price:
-
-            <?php ?>
-        </p>
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="qty" min="" value="1">
-        <button type="submit" id="addToCartBtn">Remove</button>
-        <button type="submit" id="addToCartBtn">Place Order</button>
-    </div>
+    <a href="<?php echo Mage::getBaseUrl('cart/checkout/index') ?>"><button type="submit"
+            id="addToCartBtn">checkout</button></a>
+    <a href="<?php echo Mage::getBaseUrl('sales/order/add') ?>"><button type="submit" id="addToCartBtn">Palce
+            order</button></a>
 
 </div>

@@ -90,7 +90,8 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
             // ->addJS('customer/login.js');
             $content->addChild('customerlogin', $customerlogin);
             $layout->toHtml();
-       
+            // $this->setRedirect('customer/account/dashboard');
+
         } else {
             $loginModel = Mage::getModel('customer/account');
             $login = $loginModel->setData($this->getRequest()->getPostData('login'))->login();

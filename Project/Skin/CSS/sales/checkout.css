@@ -1,0 +1,24 @@
+.address-form-container{
+    /* margin: 0 auto; */
+    width: fit-content;
+    padding: 16px;
+}
+.billing-address-container, .shipping-address-container{
+    /* border: 1px solid black; */
+    padding: 30px;
+}
+.address-form-container label{
+    display: block;
+}
+.address-form-container input, .address-form-container button{
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid gainsboro;
+    outline: none;
+}
+.checkout-container{
+    justify-content: center;
+    gap: 20px;
+    
+}

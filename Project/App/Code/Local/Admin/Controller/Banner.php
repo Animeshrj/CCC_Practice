@@ -1,15 +1,15 @@
 <?php
 class Admin_Controller_Banner extends Core_Controller_Admin_Action
 {
-    public function formAction()
+    public function indexAction()
     {
         $layout = $this->getlayout();
         $content = $layout->getChild('content');
         $bannerForm = $layout->createBlock('banner/admin_form');
         $layout->getChild('head')->addCSS('customer/header.css')
             ->addCSS('footer.css')
-            ->addCSS('form.css');
-
+            ->addCSS('form.css')
+            ->addCSS('banner.css');
         $content->addChild('form', $bannerForm);
         $layout->toHtml();
     }

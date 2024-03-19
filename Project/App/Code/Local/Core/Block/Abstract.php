@@ -16,7 +16,7 @@ class Core_Block_Abstract
     }
     public function __get($key)
     {
-        return isset($this->data[$key]) ? $this->data[$key] : null;
+        return isset ($this->data[$key]) ? $this->data[$key] : null;
     }
     public function __unset($key)
     {
@@ -33,6 +33,11 @@ class Core_Block_Abstract
     }
     public function getData($key = null)
     {
+        if (!is_null($key)) {
+            if (array_key_exists($key, $this->data)) {
+                return $this->data[$key];
+            }
+        }
         return $this->data;
     }
     public function setData($data)
@@ -50,7 +55,7 @@ class Core_Block_Abstract
     }
     public function render()
     {
-        include(Mage::getBaseDir('App') . '/Design/Frontend/Tempalte/' . $this->getTemplate());
+        include (Mage::getBaseDir('App') . '/Design/Frontend/Tempalte/' . $this->getTemplate());
     }
 
 }

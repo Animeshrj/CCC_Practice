@@ -1,9 +1,16 @@
-<style>
-
-</style>
+<?php $bannerImg = Mage::getModel('banner/banner')->getCollection();
+print_r($bannerImg);
+?>
 <div class="h1">
+    <?php foreach ($bannerImg->getData() as $banner): ?>
+        <!-- <h1>banner</h1> -->
+        <p>
+            <?php echo $banner->getbannerId() ?>
+        </p>
+        <div class="imgblock">
+            <img src="<?php echo Mage::getBaseUrl("skin/image/media/banner/") . $banner->getbanner_image(); ?>"
+                alt="image not found" srcset="">
 
-    <!-- <h1>banner</h1> -->
-    <img src="<?php echo Mage::getBaseUrl('Skin/image/car.jpg') ?>" alt="image not found" srcset="">
-
+        </div>
+    <?php endforeach ?>
 </div>
