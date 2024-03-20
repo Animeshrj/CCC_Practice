@@ -29,6 +29,10 @@
                             <label for="">Country</label>
                             <input type="text" name="address[billing_country]" id="bilCountry">
                         </div>
+                        <div>
+                            <label for="">Phone No</label>
+                            <input type="text" name="address[billing_phone]" id="bilCountry">
+                        </div>
                     </div>
                     <input type="checkbox" style="width: fit-content;margin: 5px" onclick="toggleAddress()" name=""
                         id="addCheck">
@@ -54,27 +58,48 @@
                             <input type="text" name="address[shipping_country]" id="shipCountry">
                         </div>
                         <div>
+                            <label for="">Phone No</label>
+                            <input type="number" name="address[shipping_phone]" id="shipCountry">
+                        </div>
+                        <div>
+                            <div class="payment-method-container">
+                                <p>Payment Method</p>
+                                <div>
+                                    <input type="radio" name="payment[payment_method]" value="cod">
+                                    <label for="cod">Cash on Delivery</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="payment[payment_method]" value="creditcard">
+                                    <label for="creditcard">Credit Card</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="payment[payment_method]" value="upi">
+                                    <label for="upi">UPI</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="payment-method-container">
+                                    <p>Shipping Method</p>
+                                    <div>
+                                        <input type="radio" name="shipping[shipping_method]" value="Same day">
+                                        <label for="same">Same day</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="shipping[shipping_method]" value="express">
+                                        <label for="express">Express</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="shipping[shipping_method]" value="Echo Friendly">
+                                        <label for="upi">Environment Friendly</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
                             <button type="submit">Save</button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div>
-                <div class="payment-method-container">
-                    <p>Payment Method</p>
-                    <div>
-                        <input type="radio" name="payment_method" id="cod">
-                        <label for="cod">Cash on Delivery</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="payment_method" id="creditcard">
-                        <label for="creditcard">Credit Card</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="payment_method" id="upi">
-                        <label for="upi">UPI</label>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

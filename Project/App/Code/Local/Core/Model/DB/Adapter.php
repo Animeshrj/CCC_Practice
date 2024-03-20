@@ -54,7 +54,7 @@ class Core_Model_DB_Adapter
         $sql = mysqli_query($this->connect(), $query);
         // echo $sql;
         if ($sql) {
-            echo "<script>alert('Data inserted Succsessfully!')</script>";
+            // echo "<script>alert('Data inserted Succsessfully!')</script>";
             return mysqli_insert_id($this->connect());
         } else {
             return FALSE;
